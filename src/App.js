@@ -1,23 +1,51 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import logo from './assets/logo.png'
+
 import './App.css';
 
 function App() {
+
+  const [search, setSearch] = useState('');
+  const [repositorioData, setRepositorioData] = useState();
+
+  const buscarRepositorios = (event) => {
+    event.preventDefault();
+    fetch(`https://api.github.com/users/${search}`)
+      .then(resposta => resposta.json())
+      .then(repositoriosResponse => setRepositorioData(repositoriosResponse))
+  }
+
+  const handleChange = (event) => {
+    setSearch(event.target.value)
+  }
+
+  console.log(repositorioData)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='container text-center'>
+      <header>
+        <h1 className='py-5 text-uppercase'>Repositorios do GitHub</h1>
+        <img src={logo} className='responsive ' alt='logoSistema' height='120px'/>
       </header>
+      
+      <form onSubmit={buscarRepositorios}>
+        <div className='formulario'>
+          <input
+            type="text"
+            className='input-group'
+            required
+            value={search}
+            onChange={handleChange}/>
+            <button type='submit' className='botao'>
+              Buscar
+            </button>
+        </div>
+      </form>
+      {repositorioData && (
+      <div>
+        <img
+          src={repositorioData.avatar_url}/>
+      </div>)}
     </div>
   );
 }
