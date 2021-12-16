@@ -1,30 +1,75 @@
-header{
+.cabecalho{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  padding: 5px;
+  margin-bottom: 15px;
+  background-color: rgb(189, 186, 186);
+}
+
+.caixa-apresentacao{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-h1{
+.caixa-apresentacao h1{
   margin-right: 15px;
 }
 
-
-.formulario{
+form{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
-.botao{
-  width: 20%;
-  padding: 10px;
+.formulario{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.formulario input{
+  width: 40%;
+}
+
+.formulario button{
+  width: auto;
   border: none;
   color: white;
+  padding: 5px 20px;
+  margin-left: 10px;
   border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 10px;
   background-image: linear-gradient(to right, rgb(0, 255, 221), rgb(24, 162, 226));
+}
 
+
+.resultado{
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  box-sizing: content-box;
+}
+
+.resultado .item{
+  margin: 10px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: row;
+  background-image: linear-gradient(to right, rgb(0, 255, 221), rgb(24, 162, 226));
+  overflow:auto;
+  border-radius: 5px;
+  box-shadow: 5px 5px rgba(190, 190, 190, 0.349);
+}
+
+.box-esquerda{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
 }
