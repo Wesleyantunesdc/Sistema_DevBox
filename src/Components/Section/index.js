@@ -52,7 +52,7 @@ function Section() {
                     </button>
                 </div>
             </form>
-            {repositorioData.items && loading==false && (
+            {repositorioData.items && loading===false && (
                 <RepoList repos={repositorioData.items} />
             )}
         </div>
